@@ -1,0 +1,9 @@
+cloudflare_api_key = "api key here"                                 # This should have DNS read/write permissions in Cloudflare 
+cloudflare_email   = "email associated to account"                  # Used to login with
+cloudflare_api_key_secret = "Cloudflare key secret"                 # Used for cloudflare.yml file
+cloudflare_prod_account_key = "Cloudflare production account key"   # Used for cloudflare.yml file
+cloudflare_zonid = "Zone ID for cloudflare account"                 # Used for Cloudflare resource
+cloudflare_domainname = "domain name"                               # Used for Cloudflare resource
+cloudflare_token = "cloudflare token"
+
+linux_user = "username"                                             #Admin access to cluster master(s)

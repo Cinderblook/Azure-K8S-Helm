@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nginx
+  namespace: nginx
+spec:
+  secretName: nginx
+  issuerRef:
+    name: cloudflare-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - '${cloudflare-domainname}'  
+
+  
