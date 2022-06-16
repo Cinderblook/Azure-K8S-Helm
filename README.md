@@ -2,7 +2,7 @@
 
  Deplying helm charts in Kubernetes within Azure using the AKS service.
 
- *This guide is essneitally a part 2, with part 1 being my Azure Terraform deployment using just the Kubernetes provider. Check out part one on my [Github Repo]() or on my [Site]()*
+ Check out this on my site: [Cinderblook.com](https://www.cinderblook.com/blog/terraform-azure-k8s-helm/)
 
 - Build a cluster that is running a few services 
 - Have cluster automatically scale with load
@@ -40,8 +40,6 @@ First step we'll tackle is the creation of your public and private keys.
 
 I find the easiest way to do this, is to open up a terminal (Powershell and/or pretty much any linux terminal) and type in a quick few commands. To keep it short and sweet, we will just use `ssh-keygen`
 
-![SSH-Keygen-Example](/examples/SSH-keygen-example1.png 'ssh-keygen-example1') 
-
 Ensure you save this to a locaiton you will remember, it'll be important not to loose either key. This'll allow you SSH access into your Kubernetes cluster.
 
 Copy your public key you genereated into the same folder as your .tf files will be located.
@@ -54,21 +52,15 @@ Cloudflare is important here, since it will be handing out certificates to servi
 
 Once you have created your account, and have obtained a public domain, you should see a page similar to the following; 
 
-![Cloudflare Overview Page](/examples/Cloudflare-example1.png 'Cloudflare Overview Page')
-
 Scroll down on the overview tab, and on the right hand side, there should be a 'Get your API token' link. On the following page, click 'Create token'
 
-![Cloudflare Token Creation](/examples/Cloudflare-example2.png 'Cloudflare Token Creation')
-
 Scroll down to the bottom, and select 'Create Custom Token`. On the following page, ensure you give your token a memorable name, assign it permissions to read and edit DNS zone settings, and limit it to your respective Zone resources (Domain). Set the TTL to the duration of your project.
-
-![Cloudflare Token Policy](/examples/Cloudflare-example3.png 'Cloudflare Token Policy')
 
 Continue to summary, and collect the API token key, store it discretely. This Token will be used in Terraform, within the .tfvars file later for authentication with the Cloudflare API.
 
 ## Terraform Process
 
-I prefer to seperate my Terraform files for readability, feel free to see all the code at a glance on the [Github Repo](). I'll do a breakdown here in this section.
+I prefer to seperate my Terraform files for readability, feel free to see all the code at a glance on the [Github Repo](https://github.com/Cinderblook/Azure-K8S-Helm). I'll do a breakdown here in this section.
 
 ### Setting up Providers; Azurerm, Kubernetes, Helm, Kubectl
 
