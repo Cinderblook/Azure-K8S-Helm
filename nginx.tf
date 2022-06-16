@@ -118,13 +118,3 @@ resource "kubectl_manifest" "nginx-certificate" {
 
     depends_on = [kubernetes_namespace.nginx, time_sleep.wait_for_clusterissuer]
 }
-
-resource "cloudflare_record" "cluster" {
-    zone_id = var.cloudflare_zonid
-    name = var.cloudflare_domainname
-    value =  azurerm_public_ip.cluster.ip_address
-    type = "A"
-    proxied = false
-
-    depends_on = [azurerm_lb.traefik_lb]
-}
